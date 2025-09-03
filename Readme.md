@@ -24,7 +24,7 @@ cargo install subgraph-status
 
 ## Usage
 ```
-subgraph-status <DEPLOYMENT_ID>
+subgraph-status <DEPLOYMENT_ID_1> <DEPLOYMENT_ID_2> ..
 ```
 
 Example
