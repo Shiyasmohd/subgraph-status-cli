@@ -7,15 +7,19 @@ use prettytable::color::*;
 use prettytable::format::Alignment;
 use prettytable::{Attr, Cell, Row, Table};
 
-pub fn display_status(subgraph_data: &SubgraphData) {
+pub async fn display_status(subgraph_data: &SubgraphData) {
     if subgraph_data.indexingStatuses.len() == 0 {
         println!("{}", "No Matches for Deployment ID found".bright_red());
         return;
     }
 
-    let manifest = get_manifest_as_string(&subgraph_data.indexingStatuses[0].subgraph).unwrap();
+    let manifest = get_manifest_as_string(&subgraph_data.indexingStatuses[0].subgraph)
+        .await
+        .unwrap();
 
-    let subgraph_id = get_subgraph_id(&subgraph_data.indexingStatuses[0].subgraph).unwrap();
+    let subgraph_id = get_subgraph_id(&subgraph_data.indexingStatuses[0].subgraph)
+        .await
+        .unwrap();
 
     let start_block: i64 = get_start_block(&manifest)
         .parse()

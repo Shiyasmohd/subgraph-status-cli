@@ -71,7 +71,6 @@ impl fmt::Display for Health {
     }
 }
 
-#[tokio::main]
 pub async fn get_subgraph_status(
     url: String,
     deployment_id: &String,
@@ -136,7 +135,6 @@ pub async fn get_subgraph_status(
     Ok(response_json.data)
 }
 
-#[tokio::main]
 pub async fn get_manifest_as_string(deployment_id: &String) -> Result<String, reqwest::Error> {
     let manifest_url = format!(
         "https://api.thegraph.com/ipfs/api/v0/cat?arg={}",
@@ -148,7 +146,6 @@ pub async fn get_manifest_as_string(deployment_id: &String) -> Result<String, re
     Ok(manifest)
 }
 
-#[tokio::main]
 pub async fn get_subgraph_id(deployment_id: &String) -> Result<String, reqwest::Error> {
     let manifest_url = format!(
         "https://subgraph-status-server.vercel.app/get-subgraph-id?deploymentId={}",
